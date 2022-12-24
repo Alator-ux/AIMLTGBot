@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ACQUAINTANCE -->
+
+<aiml version="1.0">
+	<category>
+		<pattern>_ меня зовут *</pattern>
+		<template>
+			<srai>
+				меня зовут <star/>
+			</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>меня зовут *</pattern>
+		<template>
+			<think>
+				<set name ="topic"></set>
+			</think>
+			<random>
+				<li>
+					Здравствуйте, <set name="user-name"><star /></set>!
+				</li>
+				<li>
+					Добро пожаловать, <set name="user-name">
+						<star />
+					</set>!
+				</li>
+			</random>
+		</template>
+	</category>
+
+	<category>
+		<pattern>кто ты</pattern>
+		<template>
+			<think>
+				<set name ="topic">о себе</set>
+			</think>
+			<random>
+				<li>Я заготовка бота для работы с нейросетью</li>
+			</random>
+		</template>
+	</category>
+
+	<category>
+		<pattern>Кря *</pattern>
+		<template>
+			<srai>Кря</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ Кря *</pattern>
+		<template>
+			<srai>Кря</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ Кря</pattern>
+		<template>
+			<srai>Кря</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>Кря</pattern>
+		<template>
+			<think>
+				<set name ="topic">кря</set>
+			</think>
+			<random>
+				<li>Кря</li>
+				<li>Кря Кря</li>
+				<li>Кря Кря Кря</li>
+				<li>Кря!</li>
+				<li>Кря Кря!</li>
+				<li>Кря Кря Кря!</li>
+				<li>Кря?</li>
+				<li>Кря Кря?</li>
+				<li>Кря Кря Кря?</li>
+				<li>
+					Кря, <get name="user-name" />
+				</li>
+				<li>
+					Кря Кря, <get name="user-name" />
+				</li>
+				<li>
+					Кря Кря Кря, <get name="user-name" />
+				</li>
+				<li>
+					Кря, <get name="user-name" />!
+				</li>
+				<li>
+					Кря Кря, <get name="user-name" />!
+				</li>
+				<li>
+					Кря Кря Кря, <get name="user-name" />!
+				</li>
+				<li>
+					Кря, <get name="user-name" />?
+				</li>
+				<li>
+					Кря Кря, <get name="user-name" />?
+				</li>
+				<li>
+					Кря Кря Кря, <get name="user-name" />?
+				</li>
+			</random>
+		</template>
+	</category>
+
+	<category>
+		<pattern>Что ты умеешь</pattern>
+		<template>
+			Волшебное ничего, но могу немного рассказать о нейросети!
+			<think><set name ="topic">нейросеть</set></think>
+		</template>
+	</category>
+
+	<!-- Алфавит часть-->
+	<category>
+		<pattern>алфавит *</pattern>
+		<template>
+```
+A	|	А	| • –
+B	|	Б	| – • • •
+C	|	Ц	| – • – •
+D	|	Д	| – • •
+E	|	Е	| •
+F	|	Ф	| • • – •
+G	|	Г	| – – •
+H	|	Х	| • • • •
+I	|	И	| • •
+J	|	Й	| • – – –
+K	|	К	| – • –
+L	|	Л	| • – • •
+M	|	М	| – –
+N	|	Н	| – •
+O	|	О	| – – –
+P	|	П	| • – – •
+Q	|	Щ	| – – • –
+R	|	Р	| • – •
+S	|	С	| • • •
+T	|	Т	| –
+U	|	У	| • • –
+V	|	Ж	| • • • –
+W	|	В	| • – –
+X	|	Ь	| – • • –
+Y	|	Ы	| – • – –
+Z	|	З	| – – • •
+Ö	|	Ч	| – – – •
+C	|	HШ	| – – – –
+Ñ	|	Ъ	| – – • –
+É	|	Э	| • • – •
+Ü	|	Ю	| • • – –
+Ä	|	Я	| • – • –
+1	|		| • – – – –
+2	|		| • • – – –
+3	|		| • • • – –
+4	|		| • • • • –
+5	|		| • • • • •
+6	|		| – • • • •
+7	|		| – – • • •
+8	|		| – – – • •
+9	|		| – – – – •
+0	|		| – – – – –
+```
+			<think>
+				<set name ="topic">алфавит</set>
+			</think>
+		</template>
+	</category>
+	<category>
+		<pattern>_ алфавит *</pattern>
+		<template>
+			<srai>
+				алфавит дай
+			</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ алфавит</pattern>
+		<template>
+			<srai>
+				алфавит дай
+			</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>алфавит</pattern>
+		<template>
+			<srai>
+				алфавит дай
+			</srai>
+		</template>
+	</category>
+
+	<!-- Расскажи о символах часть-->
+		<!-- Точка часть-->
+	<category>
+		<pattern>_ точка</pattern>
+		<template>
+			Точкой обозначается короткий сигнал.
+			<think>
+				<set name ="topic">точка</set>
+			</think>
+		</template>
+	</category>
+	<category>
+		<pattern>_ точка _</pattern>
+		<template>
+			<srai>что значит точка</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>точка _</pattern>
+		<template>
+			<srai>что значит точка</srai>
+		</template>
+	</category>
+		<!-- Тире часть-->
+	<category>
+		<pattern>_ тире</pattern>
+		<template>
+			Тире обозначается длинный сигнал.
+			<think>
+				<set name ="topic">тире</set>
+			</think>
+		</template>
+	</category>
+	<category>
+		<pattern>_ тире _</pattern>
+		<template>
+			<srai>что значит тире</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>тире _</pattern>
+		<template>
+			<srai>что значит тире</srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>расскажи о себе</pattern>
+		<template>
+			<think>
+				<set name ="topic">нейросеть</set>
+			</think>
+			<srai>кто ты</srai>
+			А умею пока что <lowercase>
+				<srai>что ты умеешь</srai>
+			</lowercase>
+		</template>
+	</category>
+
+	<!--Поподробнее часть-->
+	<category>
+		<pattern>поподробнее</pattern>
+		<template>
+			Подробный ответ на тему <get name="topic"/> таков:
+			<condition name ="topic" value="нейросеть">
+				Азбука Морзе Азбука Мо́рзе, «Морзя́нка», Код Мо́рзе — способ знакового кодирования, представление букв алфавита, цифр, знаков препинания и других символов последовательностью сигналов: длинных (тире) и коротких (точек). За единицу времени принимается длительность одной точки.
+			</condition>
+			<condition name ="topic" value="точка">
+				В стандартном коде Морзе за единицу времени принимается длительность самого короткого сигнала — точки.
+Пауза между элементами одного знака — одна точка, между знаками в слове — 3 точки, между словами — 7 точек.
+			</condition>
+			<condition name ="topic" value="тире">
+				Длительность тире равна трём точкам
+			</condition>
+			<condition name ="topic" value="кря">
+				*Подробное кря*
+			</condition>
+			<condition name ="topic" value="о себе">
+				Я бот ЧВК ИС
+			</condition>
+			<condition name ="topic" value="">
+				А что подробнее-то?
+			</condition>
+		</template>
+	</category>
+	<category>
+		<pattern>_ поподробнее _</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>поподробнее _</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ поподробнее</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ подробнее _</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>подробнее _</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ подробнее</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>подробнее</pattern>
+		<template>
+			<srai>поподробнее</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>ого</pattern>
+		<template>
+			Ага
+		</template>
+	</category>
+
+	<category>
+		<pattern>Аудио</pattern>
+		<template>Жаль, я не умею слушать</template>
+	</category>
+	<category>
+		<pattern>Видео</pattern>
+		<template>Спасибо, но, кажется, у меня сломалась кнопка запуска</template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<template>
+			Я такое не знаю, <get name="user-name"/>
+		</template>
+	</category>
+</aiml>
