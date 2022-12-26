@@ -6,8 +6,7 @@ namespace AIMLTGBot
     public class AIMLService
     {
         readonly Bot bot;
-        readonly Dictionary<long, User> users = new Dictionary<long, User>();
-
+        readonly Dictionary<long, User> users = new Dictionary<long, User>();        
         public AIMLService()
         {
             bot = new Bot();

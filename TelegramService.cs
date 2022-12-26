@@ -17,13 +17,13 @@ namespace AIMLTGBot
 {
     public class TelegramService : IDisposable
     {
+        private string systemPattern = "zwkvssqhqpbrgcgxtaxjneueftjcwuztqsakxmnzjcyyauasntayppiqtcjtytciwzpuktlojqepafmqkvnskbjttagbhffuirndtkjwcxfuayyubbluvpzsqzwmakadvhpagtiianhqfuthpjripz\r\n";
         private readonly TelegramBotClient client;
         private readonly AIMLService aiml;
         // CancellationToken - инструмент для отмены задач, запущенных в отдельном потоке
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
         private BaseNetwork net;
         public string Username { get; }
-
         public TelegramService(string token, StudentNetwork net, AIMLService aimlService)
         {
             this.net = net;
@@ -64,18 +64,20 @@ namespace AIMLTGBot
                 Telegram.Bot.Types.File fl = await client.GetFileAsync(photoId, cancellationToken: cancellationToken);
                 var imageStream = new MemoryStream();
                 await client.DownloadFileAsync(fl.FilePath, imageStream, cancellationToken: cancellationToken);
+
                 var bitmap = new Bitmap(Image.FromStream(imageStream));
                 var pr = new NeuralNetwork1.ImageProcessor.Processor().processImage(bitmap);
                 var letter = net.Predict(new Sample(pr, 10));
-                var answ = MorseWrapper.MorseToString(letter);
-                // Если бы мы хотели получить битмап, то могли бы использовать new Bitmap(Image.FromStream(imageStream))
-                // Но вместо этого пошлём картинку назад
-                // Стрим помнит последнее место записи, мы же хотим теперь прочитать с самого начала
+                var strLetter = MorseWrapper.MorseToString(letter);
+
                 imageStream.Seek(0, 0);
                 await botClient.SendTextMessageAsync(
                     chatId: chatId,
-                    text: answ,
+                    text: strLetter,
                     cancellationToken: cancellationToken);
+
+                aiml.Talk(chatId, username, strLetter + " " + systemPattern);
+
                 /*await client.SendPhotoAsync(
                     message.Chat.Id,
                     imageStream,
